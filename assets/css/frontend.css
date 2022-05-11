@@ -1,0 +1,4 @@
+.woocommerce form .form-row select, .woocommerce-page form .form-row select .storeslots_custom_checkout_field select {
+    cursor: pointer !important;
+}
+

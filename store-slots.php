@@ -32,3 +32,5 @@ require_once STORESLOTS_PATH . 'includes/StoreSlotsUtils.php';
 require_once STORESLOTS_PATH . 'includes/StoreSlotsDB.php';
 require_once STORESLOTS_PATH . 'backend/class-store-slots-ajax.php';
 require_once STORESLOTS_PATH . 'backend/class-store-slots-admin.php';
+require_once STORESLOTS_PATH . 'frontend/class-storeslots-frontend-ajax.php';
+require_once STORESLOTS_PATH . 'frontend/class-storeslots-frontend.php';

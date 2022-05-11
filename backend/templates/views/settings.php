@@ -8,6 +8,27 @@
     $storeslots_thursday  = !empty($this->storeslot_settings) && !empty($this->storeslot_settings['storeslots_thursday']) ? $this->storeslot_settings['storeslots_thursday'] : ''; 
     $storeslots_friday  = !empty($this->storeslot_settings) && !empty($this->storeslot_settings['storeslots_friday']) ? $this->storeslot_settings['storeslots_friday'] : ''; 
 
+    $saturday_open_hour_start  = !empty($this->storeslot_settings) && !empty($this->storeslot_settings['saturday_open_hour_start']) ? $this->storeslot_settings['saturday_open_hour_start'] : ''; 
+    $saturday_open_hour_end  = !empty($this->storeslot_settings) && !empty($this->storeslot_settings['saturday_open_hour_end']) ? $this->storeslot_settings['saturday_open_hour_end'] : '';
+    
+    $sunday_open_hour_start  = !empty($this->storeslot_settings) && !empty($this->storeslot_settings['sunday_open_hour_start']) ? $this->storeslot_settings['sunday_open_hour_start'] : ''; 
+    $sunday_open_hour_end  = !empty($this->storeslot_settings) && !empty($this->storeslot_settings['sunday_open_hour_end']) ? $this->storeslot_settings['sunday_open_hour_end'] : ''; 
+
+    $monday_open_hour_start  = !empty($this->storeslot_settings) && !empty($this->storeslot_settings['monday_open_hour_start']) ? $this->storeslot_settings['monday_open_hour_start'] : ''; 
+    $monday_open_hour_end  = !empty($this->storeslot_settings) && !empty($this->storeslot_settings['monday_open_hour_end']) ? $this->storeslot_settings['monday_open_hour_end'] : ''; 
+
+    $tuesday_open_hour_start  = !empty($this->storeslot_settings) && !empty($this->storeslot_settings['tuesday_open_hour_start']) ? $this->storeslot_settings['tuesday_open_hour_start'] : ''; 
+    $tuesday_open_hour_end  = !empty($this->storeslot_settings) && !empty($this->storeslot_settings['tuesday_open_hour_end']) ? $this->storeslot_settings['tuesday_open_hour_end'] : ''; 
+
+    $wednesday_open_hour_start  = !empty($this->storeslot_settings) && !empty($this->storeslot_settings['wednesday_open_hour_start']) ? $this->storeslot_settings['wednesday_open_hour_start'] : ''; 
+    $wednesday_open_hour_end  = !empty($this->storeslot_settings) && !empty($this->storeslot_settings['wednesday_open_hour_end']) ? $this->storeslot_settings['wednesday_open_hour_end'] : '';
+
+    $thursday_open_hour_start  = !empty($this->storeslot_settings) && !empty($this->storeslot_settings['thursday_open_hour_start']) ? $this->storeslot_settings['thursday_open_hour_start'] : ''; 
+    $thursday_open_hour_end  = !empty($this->storeslot_settings) && !empty($this->storeslot_settings['thursday_open_hour_end']) ? $this->storeslot_settings['thursday_open_hour_end'] : ''; 
+
+    $friday_open_hour_start  = !empty($this->storeslot_settings) && !empty($this->storeslot_settings['friday_open_hour_start']) ? $this->storeslot_settings['friday_open_hour_start'] : ''; 
+    $friday_open_hour_end  = !empty($this->storeslot_settings) && !empty($this->storeslot_settings['friday_open_hour_end']) ? $this->storeslot_settings['friday_open_hour_end'] : ''; 
+
 ?>
 
 <div id="storeslots_dashboard">
@@ -121,8 +142,8 @@
                                                 <input class="storeslots-weak-common" type="checkbox" name="storeslots_saturday" value="saturday" <?php echo 'saturday' == $storeslots_saturday? 'checked' : ''; ?>>
                                                 <label for="storeslots_saturday">Saturday</label>
                                             </div>
-                                            <input class="storeslots_text_control disabled-day h50" type="time" name="saturday_open_hour_start" id="" value="" placeholder="">
-                                            <input class="storeslots_text_control disabled-day storeslots_tt_custom h50" type="time" name="saturday_open_hour_end" id="" value="" placeholder="">
+                                            <input class="storeslots_text_control disabled-day h50" type="time" name="saturday_open_hour_start" id="" value="<?php echo !empty($this->storeslot_settings) && !empty($this->storeslot_settings['saturday_open_hour_start']) ? $this->storeslot_settings['saturday_open_hour_start'] : ''; ?>" placeholder="">
+                                            <input class="storeslots_text_control disabled-day storeslots_tt_custom h50" type="time" name="saturday_open_hour_end" id="" value="<?php echo !empty($this->storeslot_settings) && !empty($this->storeslot_settings['saturday_open_hour_end']) ? $this->storeslot_settings['saturday_open_hour_end'] : ''; ?>" placeholder="">
                                         </div>
                                     </div>
                                 </div>
@@ -136,8 +157,8 @@
                                                 <input type="checkbox" class="storeslots-weak-common"name="storeslots_sunday" value="sunday" <?php echo 'sunday' == $storeslots_sunday? 'checked' : ''; ?>>
                                                 <label for="storeslots_sunday">Sunday</label>
                                             </div>
-                                            <input class="disabled-day storeslots_text_control h50" type="time" name="sunday_open_hour_start" id="" value="" placeholder="">
-                                            <input class="disabled-day storeslots_text_control storeslots_tt_custom h50" type="time" name="sunday_open_hour_end" id="" value="" placeholder="">
+                                            <input class="disabled-day storeslots_text_control h50" type="time" name="sunday_open_hour_start" id="" value="<?php echo !empty($this->storeslot_settings) && !empty($this->storeslot_settings['sunday_open_hour_start']) ? $this->storeslot_settings['sunday_open_hour_start'] : ''; ?>" placeholder="">
+                                            <input class="disabled-day storeslots_text_control storeslots_tt_custom h50" type="time" name="sunday_open_hour_end" id="" value="<?php echo !empty($this->storeslot_settings) && !empty($this->storeslot_settings['sunday_open_hour_end']) ? $this->storeslot_settings['sunday_open_hour_end'] : ''; ?>" placeholder="">
                                         </div>
                                     </div>
                                 </div>
@@ -151,8 +172,8 @@
                                                 <input class="storeslots-weak-common" type="checkbox" name="storeslots_monday" value="monday" <?php echo 'monday' == $storeslots_monday? 'checked' : ''; ?>>
                                                 <label for="storeslots_monday">Monday</label>
                                             </div>
-                                            <input class="disabled-day storeslots_text_control h50" type="time" name="monday_open_hour_start" id="" value="" placeholder="">
-                                            <input class="disabled-day storeslots_text_control storeslots_tt_custom h50" type="time" name="monday_open_hour_end" id="" value="" placeholder="">
+                                            <input class="disabled-day storeslots_text_control h50" type="time" name="monday_open_hour_start" id="" value="<?php echo !empty($this->storeslot_settings) && !empty($this->storeslot_settings['monday_open_hour_start']) ? $this->storeslot_settings['monday_open_hour_start'] : ''; ?>" placeholder="">
+                                            <input class="disabled-day storeslots_text_control storeslots_tt_custom h50" type="time" name="monday_open_hour_end" id="" value="<?php echo !empty($this->storeslot_settings) && !empty($this->storeslot_settings['monday_open_hour_end']) ? $this->storeslot_settings['monday_open_hour_end'] : ''; ?>" placeholder="">
                                         </div>
                                     </div>
                                 </div>
@@ -166,8 +187,8 @@
                                                 <input class="storeslots-weak-common" type="checkbox" name="storeslots_tuesday" value="tuesday" <?php echo 'tuesday' == $storeslots_tuesday? 'checked' : ''; ?>>
                                                 <label for="storeslots_tuesday">Tuesday</label>
                                             </div>
-                                            <input class="disabled-day storeslots_text_control h50" type="time" name="tuesday_open_hour_start" id="" value="" placeholder="">
-                                            <input class="disabled-day storeslots_text_control storeslots_tt_custom h50" type="time" name="tuesday_open_hour_end" id="" value="" placeholder="">
+                                            <input class="disabled-day storeslots_text_control h50" type="time" name="tuesday_open_hour_start" id="" value="<?php echo !empty($this->storeslot_settings) && !empty($this->storeslot_settings['tuesday_open_hour_start']) ? $this->storeslot_settings['tuesday_open_hour_start'] : ''; ?>" placeholder="">
+                                            <input class="disabled-day storeslots_text_control storeslots_tt_custom h50" type="time" name="tuesday_open_hour_end" id="" value="<?php echo !empty($this->storeslot_settings) && !empty($this->storeslot_settings['tuesday_open_hour_end']) ? $this->storeslot_settings['tuesday_open_hour_end'] : ''; ?>" placeholder="">
                                         </div>
                                     </div>
                                 </div>
@@ -181,8 +202,8 @@
                                                 <input class="storeslots-weak-common" type="checkbox" name="storeslots_wednesday" value="wednesday" <?php echo 'wednesday' == $storeslots_wednesday? 'checked' : ''; ?>>
                                                 <label for="storeslots_wednesday">Wednesday</label>
                                             </div>
-                                            <input class="disabled-day storeslots_text_control h50" type="time" name="wednesday_open_hour_start" id="" value="" placeholder="">
-                                            <input class="disabled-day storeslots_text_control storeslots_tt_custom h50" type="time" name="wednesday_open_hour_end" id="" value="" placeholder="">
+                                            <input class="disabled-day storeslots_text_control h50" type="time" name="wednesday_open_hour_start" id="" value="<?php echo !empty($this->storeslot_settings) && !empty($this->storeslot_settings['wednesday_open_hour_start']) ? $this->storeslot_settings['wednesday_open_hour_start'] : ''; ?>" placeholder="">
+                                            <input class="disabled-day storeslots_text_control storeslots_tt_custom h50" type="time" name="wednesday_open_hour_end" id="" value="<?php echo !empty($this->storeslot_settings) && !empty($this->storeslot_settings['wednesday_open_hour_end']) ? $this->storeslot_settings['wednesday_open_hour_end'] : ''; ?>" placeholder="">
                                         </div>
                                     </div>
                                 </div>
@@ -196,8 +217,8 @@
                                                 <input class="storeslots-weak-common" type="checkbox" name="storeslots_thursday" value="thursday" <?php echo 'thursday' == $storeslots_thursday? 'checked' : ''; ?>>
                                                 <label for="storeslots_thursday">Thursday</label>
                                             </div>
-                                            <input class="disabled-day storeslots_text_control h50" type="time" name="thursday_open_hour_start" id="" value="" placeholder="">
-                                            <input class="disabled-day storeslots_text_control storeslots_tt_custom h50" type="time" name="thursday_open_hour_end" id="" value="" placeholder="">
+                                            <input class="disabled-day storeslots_text_control h50" type="time" name="thursday_open_hour_start" id="" value="<?php echo !empty($this->storeslot_settings) && !empty($this->storeslot_settings['thursday_open_hour_start']) ? $this->storeslot_settings['thursday_open_hour_start'] : ''; ?>" placeholder="">
+                                            <input class="disabled-day storeslots_text_control storeslots_tt_custom h50" type="time" name="thursday_open_hour_end" id="" value="<?php echo !empty($this->storeslot_settings) && !empty($this->storeslot_settings['thursday_open_hour_end']) ? $this->storeslot_settings['thursday_open_hour_end'] : ''; ?>" placeholder="">
                                         </div>
                                     </div>
                                 </div>
@@ -211,8 +232,8 @@
                                                 <input class="storeslots-weak-common" type="checkbox" name="storeslots_friday" value="friday" <?php echo 'friday' == $storeslots_friday? 'checked' : ''; ?>>
                                                 <label for="storeslots_friday">Friday</label>
                                             </div>
-                                            <input class="disabled-day storeslots_text_control h50" type="time" name="friday_open_hour_start" id="" value="" placeholder="">
-                                            <input class="disabled-day storeslots_text_control storeslots_tt_custom h50" type="time" name="friday_open_hour_end" id="" value="" placeholder="">
+                                            <input class="disabled-day storeslots_text_control h50" type="time" name="friday_open_hour_start" id="" value="<?php echo !empty($this->storeslot_settings) && !empty($this->storeslot_settings['friday_open_hour_start']) ? $this->storeslot_settings['friday_open_hour_start'] : ''; ?>" placeholder="">
+                                            <input class="disabled-day storeslots_text_control storeslots_tt_custom h50" type="time" name="friday_open_hour_end" id="" value="<?php echo !empty($this->storeslot_settings) && !empty($this->storeslot_settings['friday_open_hour_end']) ? $this->storeslot_settings['friday_open_hour_end'] : ''; ?>" placeholder="">
                                         </div>
                                     </div>
                                 </div>
