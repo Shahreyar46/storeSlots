@@ -11,6 +11,7 @@ if (!class_exists('StoreSlotsAdmin')) {
 
         public $utils;
         public $db;
+        public $storeslot_settings = array();
 
         public function __construct() {
             $this->utils = new StoreSlotsUtils();
@@ -20,6 +21,7 @@ if (!class_exists('StoreSlotsAdmin')) {
             add_action( 'plugin_action_links_' . STORESLOTS_BASE_PATH, array( $this, 'store_slots_action_links') );
             $this->db = new StoreSlotsDB($this);
             new StoreSlotsAdminAjax($this);
+            $this->storeslot_settings = get_option( 'storeslot_settings', false );
         }
 
 

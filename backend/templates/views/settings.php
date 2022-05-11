@@ -1,3 +1,15 @@
+<?php 
+    
+    $storeslots_saturday  = !empty($this->storeslot_settings) && !empty($this->storeslot_settings['storeslots_saturday']) ? $this->storeslot_settings['storeslots_saturday'] : ''; 
+    $storeslots_sunday  = !empty($this->storeslot_settings) && !empty($this->storeslot_settings['storeslots_sunday']) ? $this->storeslot_settings['storeslots_sunday'] : ''; 
+    $storeslots_monday  = !empty($this->storeslot_settings) && !empty($this->storeslot_settings['storeslots_monday']) ? $this->storeslot_settings['storeslots_monday'] : ''; 
+    $storeslots_tuesday  = !empty($this->storeslot_settings) && !empty($this->storeslot_settings['storeslots_tuesday']) ? $this->storeslot_settings['storeslots_tuesday'] : ''; 
+    $storeslots_wednesday  = !empty($this->storeslot_settings) && !empty($this->storeslot_settings['storeslots_wednesday']) ? $this->storeslot_settings['storeslots_wednesday'] : ''; 
+    $storeslots_thursday  = !empty($this->storeslot_settings) && !empty($this->storeslot_settings['storeslots_thursday']) ? $this->storeslot_settings['storeslots_thursday'] : ''; 
+    $storeslots_friday  = !empty($this->storeslot_settings) && !empty($this->storeslot_settings['storeslots_friday']) ? $this->storeslot_settings['storeslots_friday'] : ''; 
+
+?>
+
 <div id="storeslots_dashboard">
 
     <form class="storeslots-settings-form" id="storeslots_settings_form">
@@ -33,7 +45,7 @@
                                     <div class="storeslots_list_items">
                                         <div class="storeslots_item">
                                             <label class="toggle_switch">
-                                                <input id="storeslots_enable_delivery_or_takeaway" class="storeslots_default_checked" name="storeslots_enable_delivery_or_takeaway" type="checkbox" value="yes">
+                                                <input id="storeslots_enable_delivery_or_takeaway" class="storeslots_default_checked" name="storeslots_enable_delivery_or_takeaway" type="checkbox" value="yes" <?php echo !empty($this->storeslot_settings) && isset($this->storeslot_settings['storeslots_enable_delivery_or_takeaway']) ? 'checked' : ''; ?>>
                                                 <span class="slider round"></span>
                                             </label>
                                         </div>
@@ -50,7 +62,7 @@
                                 <div class="label_content ">
                                     <div class="storeslots_list_items">
                                         <div class="storeslots_item">
-                                            <input class="storeslots_text_control h50" type="text" name="storeslots_order_type_label" id="" value="" placeholder="">
+                                            <input class="storeslots_text_control h50" type="text" name="storeslots_order_type_label" id="" value="<?php echo !empty($this->storeslot_settings) && !empty($this->storeslot_settings['storeslots_order_type_label']) ? $this->storeslot_settings['storeslots_order_type_label'] : ''; ?>" placeholder="">
                                         </div>
                                         <small class="storeslots-hints">Order type field label</small>
                                     </div>
@@ -65,7 +77,7 @@
                                 <div class="label_content ">
                                     <div class="storeslots_list_items">
                                         <div class="storeslots_item">
-                                            <input class="storeslots_text_control h50" type="text" name="storeslots_delivery_option_label" id="" value="" placeholder="">
+                                            <input class="storeslots_text_control h50" type="text" name="storeslots_delivery_option_label" id="" value="<?php echo !empty($this->storeslot_settings) && !empty($this->storeslot_settings['storeslots_delivery_option_label']) ? $this->storeslot_settings['storeslots_delivery_option_label'] : ''; ?>" placeholder="">
                                         </div>
                                         <small class="storeslots-hints">Order type's home delivery option.</small>
                                     </div>
@@ -80,7 +92,7 @@
                                 <div class="label_content ">
                                     <div class="storeslots_list_items">
                                         <div class="storeslots_item">
-                                            <input class="storeslots_text_control h50" type="text" name="storeslots_takeaway_option_label" id="storeslots_takeaway_option_label" value="" placeholder="">
+                                            <input class="storeslots_text_control h50" type="text" name="storeslots_takeaway_option_label" id="storeslots_takeaway_option_label" value="<?php echo !empty($this->storeslot_settings) && !empty($this->storeslot_settings['storeslots_takeaway_option_label']) ? $this->storeslot_settings['storeslots_takeaway_option_label'] : ''; ?>" placeholder="">
                                         </div>
                                         <small class="storeslots-hints">Order type's takeaway delivery option.</small>
                                     </div>
@@ -106,7 +118,7 @@
                                     <div class="storeslots_input_wrapper">
                                         <div class="storeslots_inputs">
                                             <div style="width: 11%;">
-                                                <input class="storeslots-weak-common" type="checkbox" name="storeslots_saturday" value="saturday">
+                                                <input class="storeslots-weak-common" type="checkbox" name="storeslots_saturday" value="saturday" <?php echo 'saturday' == $storeslots_saturday? 'checked' : ''; ?>>
                                                 <label for="storeslots_saturday">Saturday</label>
                                             </div>
                                             <input class="storeslots_text_control disabled-day h50" type="time" name="saturday_open_hour_start" id="" value="" placeholder="">
@@ -121,7 +133,7 @@
                                     <div class="storeslots_input_wrapper">
                                         <div class="storeslots_inputs">
                                             <div style="width: 11%;">
-                                                <input type="checkbox" class="storeslots-weak-common"name="storeslots_sunday" value="sunday">
+                                                <input type="checkbox" class="storeslots-weak-common"name="storeslots_sunday" value="sunday" <?php echo 'sunday' == $storeslots_sunday? 'checked' : ''; ?>>
                                                 <label for="storeslots_sunday">Sunday</label>
                                             </div>
                                             <input class="disabled-day storeslots_text_control h50" type="time" name="sunday_open_hour_start" id="" value="" placeholder="">
@@ -136,7 +148,7 @@
                                     <div class="storeslots_input_wrapper">
                                         <div class="storeslots_inputs">
                                             <div style="width: 11%;">
-                                                <input class="storeslots-weak-common" type="checkbox" name="storeslots_monday" value="monday">
+                                                <input class="storeslots-weak-common" type="checkbox" name="storeslots_monday" value="monday" <?php echo 'monday' == $storeslots_monday? 'checked' : ''; ?>>
                                                 <label for="storeslots_monday">Monday</label>
                                             </div>
                                             <input class="disabled-day storeslots_text_control h50" type="time" name="monday_open_hour_start" id="" value="" placeholder="">
@@ -151,7 +163,7 @@
                                     <div class="storeslots_input_wrapper">
                                         <div class="storeslots_inputs">
                                             <div style="width: 11%;">
-                                                <input class="storeslots-weak-common" type="checkbox" name="storeslots_tuesday" value="tuesday">
+                                                <input class="storeslots-weak-common" type="checkbox" name="storeslots_tuesday" value="tuesday" <?php echo 'tuesday' == $storeslots_tuesday? 'checked' : ''; ?>>
                                                 <label for="storeslots_tuesday">Tuesday</label>
                                             </div>
                                             <input class="disabled-day storeslots_text_control h50" type="time" name="tuesday_open_hour_start" id="" value="" placeholder="">
@@ -166,7 +178,7 @@
                                     <div class="storeslots_input_wrapper">
                                         <div class="storeslots_inputs">
                                             <div style="width: 11%;">
-                                                <input class="storeslots-weak-common" type="checkbox" name="storeslots_wednesday" value="wednesday">
+                                                <input class="storeslots-weak-common" type="checkbox" name="storeslots_wednesday" value="wednesday" <?php echo 'wednesday' == $storeslots_wednesday? 'checked' : ''; ?>>
                                                 <label for="storeslots_wednesday">Wednesday</label>
                                             </div>
                                             <input class="disabled-day storeslots_text_control h50" type="time" name="wednesday_open_hour_start" id="" value="" placeholder="">
@@ -181,7 +193,7 @@
                                     <div class="storeslots_input_wrapper">
                                         <div class="storeslots_inputs">
                                             <div style="width: 11%;">
-                                                <input class="storeslots-weak-common" type="checkbox" name="storeslots_thursday" value="thursday">
+                                                <input class="storeslots-weak-common" type="checkbox" name="storeslots_thursday" value="thursday" <?php echo 'thursday' == $storeslots_thursday? 'checked' : ''; ?>>
                                                 <label for="storeslots_thursday">Thursday</label>
                                             </div>
                                             <input class="disabled-day storeslots_text_control h50" type="time" name="thursday_open_hour_start" id="" value="" placeholder="">
@@ -196,7 +208,7 @@
                                     <div class="storeslots_input_wrapper">
                                         <div class="storeslots_inputs">
                                             <div style="width: 11%;">
-                                                <input class="storeslots-weak-common" type="checkbox" name="storeslots_friday" value="friday">
+                                                <input class="storeslots-weak-common" type="checkbox" name="storeslots_friday" value="friday" <?php echo 'friday' == $storeslots_friday? 'checked' : ''; ?>>
                                                 <label for="storeslots_friday">Friday</label>
                                             </div>
                                             <input class="disabled-day storeslots_text_control h50" type="time" name="friday_open_hour_start" id="" value="" placeholder="">
