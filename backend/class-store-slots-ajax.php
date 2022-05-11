@@ -12,8 +12,13 @@ if (!class_exists('StoreSlotsAdminAjax')) {
 
         public function __construct( $admin_obj ) {
             $this->admin_class = $admin_obj;
-           // add_action( 'wp_ajax_twinkle_smtp_get_smtp_data', array($this, 'twinkle_smtp_get_smtp_data') );
+            add_action( 'wp_ajax_storeslot_save_settings', array($this, 'storeslot_save_settings') );
 
+        }
+
+        public function storeslot_save_settings() {
+            include_once STORESLOTS_PATH . "backend/api/save_storeslot_settings.php";
+            wp_die();
         }
 
         

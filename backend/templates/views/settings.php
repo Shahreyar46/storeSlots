@@ -109,8 +109,8 @@
                                                 <input class="storeslots-weak-common" type="checkbox" name="storeslots_saturday" value="saturday">
                                                 <label for="storeslots_saturday">Saturday</label>
                                             </div>
-                                            <input class="storeslots_text_control h50" type="time" name="saturday_open_hour_start" id="" value="" placeholder="">
-                                            <input class="storeslots_text_control storeslots_tt_custom h50" type="time" name="saturday_open_hour_end" id="" value="" placeholder="">
+                                            <input class="storeslots_text_control disabled-day h50" type="time" name="saturday_open_hour_start" id="" value="" placeholder="">
+                                            <input class="storeslots_text_control disabled-day storeslots_tt_custom h50" type="time" name="saturday_open_hour_end" id="" value="" placeholder="">
                                         </div>
                                     </div>
                                 </div>
@@ -124,8 +124,8 @@
                                                 <input type="checkbox" class="storeslots-weak-common"name="storeslots_sunday" value="sunday">
                                                 <label for="storeslots_sunday">Sunday</label>
                                             </div>
-                                            <input class="storeslots_text_control h50" type="time" name="sunday_open_hour_start" id="" value="" placeholder="">
-                                            <input class="storeslots_text_control storeslots_tt_custom h50" type="time" name="sunday_open_hour_end" id="" value="" placeholder="">
+                                            <input class="disabled-day storeslots_text_control h50" type="time" name="sunday_open_hour_start" id="" value="" placeholder="">
+                                            <input class="disabled-day storeslots_text_control storeslots_tt_custom h50" type="time" name="sunday_open_hour_end" id="" value="" placeholder="">
                                         </div>
                                     </div>
                                 </div>
@@ -136,11 +136,11 @@
                                     <div class="storeslots_input_wrapper">
                                         <div class="storeslots_inputs">
                                             <div style="width: 11%;">
-                                                <input type="checkbox" name="storeslots_monday" value="monday">
+                                                <input class="storeslots-weak-common" type="checkbox" name="storeslots_monday" value="monday">
                                                 <label for="storeslots_monday">Monday</label>
                                             </div>
-                                            <input class="storeslots_text_control h50" type="time" name="monday_open_hour_start" id="" value="" placeholder="">
-                                            <input class="storeslots_text_control storeslots_tt_custom h50" type="time" name="monday_open_hour_end" id="" value="" placeholder="">
+                                            <input class="disabled-day storeslots_text_control h50" type="time" name="monday_open_hour_start" id="" value="" placeholder="">
+                                            <input class="disabled-day storeslots_text_control storeslots_tt_custom h50" type="time" name="monday_open_hour_end" id="" value="" placeholder="">
                                         </div>
                                     </div>
                                 </div>
@@ -151,11 +151,11 @@
                                     <div class="storeslots_input_wrapper">
                                         <div class="storeslots_inputs">
                                             <div style="width: 11%;">
-                                                <input type="checkbox" name="storeslots_tuesday" value="tuesday">
+                                                <input class="storeslots-weak-common" type="checkbox" name="storeslots_tuesday" value="tuesday">
                                                 <label for="storeslots_tuesday">Tuesday</label>
                                             </div>
-                                            <input class="storeslots_text_control h50" type="time" name="tuesday_open_hour_start" id="" value="" placeholder="">
-                                            <input class="storeslots_text_control storeslots_tt_custom h50" type="time" name="tuesday_open_hour_end" id="" value="" placeholder="">
+                                            <input class="disabled-day storeslots_text_control h50" type="time" name="tuesday_open_hour_start" id="" value="" placeholder="">
+                                            <input class="disabled-day storeslots_text_control storeslots_tt_custom h50" type="time" name="tuesday_open_hour_end" id="" value="" placeholder="">
                                         </div>
                                     </div>
                                 </div>
@@ -166,11 +166,11 @@
                                     <div class="storeslots_input_wrapper">
                                         <div class="storeslots_inputs">
                                             <div style="width: 11%;">
-                                                <input type="checkbox" name="storeslots_wednesday" value="wednesday">
+                                                <input class="storeslots-weak-common" type="checkbox" name="storeslots_wednesday" value="wednesday">
                                                 <label for="storeslots_wednesday">Wednesday</label>
                                             </div>
-                                            <input class="storeslots_text_control h50" type="time" name="wednesday_open_hour_start" id="" value="" placeholder="">
-                                            <input class="storeslots_text_control storeslots_tt_custom h50" type="time" name="wednesday_open_hour_end" id="" value="" placeholder="">
+                                            <input class="disabled-day storeslots_text_control h50" type="time" name="wednesday_open_hour_start" id="" value="" placeholder="">
+                                            <input class="disabled-day storeslots_text_control storeslots_tt_custom h50" type="time" name="wednesday_open_hour_end" id="" value="" placeholder="">
                                         </div>
                                     </div>
                                 </div>
@@ -181,11 +181,11 @@
                                     <div class="storeslots_input_wrapper">
                                         <div class="storeslots_inputs">
                                             <div style="width: 11%;">
-                                                <input type="checkbox" name="storeslots_thursday" value="thursday">
+                                                <input class="storeslots-weak-common" type="checkbox" name="storeslots_thursday" value="thursday">
                                                 <label for="storeslots_thursday">Thursday</label>
                                             </div>
-                                            <input class="storeslots_text_control h50" type="time" name="thursday_open_hour_start" id="" value="" placeholder="">
-                                            <input class="storeslots_text_control storeslots_tt_custom h50" type="time" name="thursday_open_hour_end" id="" value="" placeholder="">
+                                            <input class="disabled-day storeslots_text_control h50" type="time" name="thursday_open_hour_start" id="" value="" placeholder="">
+                                            <input class="disabled-day storeslots_text_control storeslots_tt_custom h50" type="time" name="thursday_open_hour_end" id="" value="" placeholder="">
                                         </div>
                                     </div>
                                 </div>
@@ -196,11 +196,11 @@
                                     <div class="storeslots_input_wrapper">
                                         <div class="storeslots_inputs">
                                             <div style="width: 11%;">
-                                                <input type="checkbox" name="storeslots_friday" value="friday">
+                                                <input class="storeslots-weak-common" type="checkbox" name="storeslots_friday" value="friday">
                                                 <label for="storeslots_friday">Friday</label>
                                             </div>
-                                            <input class="storeslots_text_control h50" type="time" name="friday_open_hour_start" id="" value="" placeholder="">
-                                            <input class="storeslots_text_control storeslots_tt_custom h50" type="time" name="friday_open_hour_end" id="" value="" placeholder="">
+                                            <input class="disabled-day storeslots_text_control h50" type="time" name="friday_open_hour_start" id="" value="" placeholder="">
+                                            <input class="disabled-day storeslots_text_control storeslots_tt_custom h50" type="time" name="friday_open_hour_end" id="" value="" placeholder="">
                                         </div>
                                     </div>
                                 </div>
