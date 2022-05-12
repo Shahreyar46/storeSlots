@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name:       StoreSlotsT
+ * Plugin Name:       StoreSlots
  * Plugin URI:        https://github.com/Shahreyar46
  * Description:       StoreSlots is one of the top wp plugin for delivery & Takeaway products on schedule.
  * Version:           1.0.0
