@@ -12,15 +12,26 @@ if (!class_exists ('StoreSlotsFrontend')) {
           
         public function __construct (){
             $this->utils = new StoreSlotsUtils();
+            $this->storeslot_settings = get_option('storeslot_settings', false);
             
             new StoreSlotsFrontendAjax($this);
             add_action ('wp_enqueue_scripts', array($this, 'store_slots_frontend_enqueue'));
-            add_action('woocommerce_after_order_notes', array($this, 'storeslots_add_custom_field'));
-            add_action('woocommerce_checkout_process', array($this, 'storeslots_checkout_field_process'));
-            add_action('woocommerce_checkout_update_order_meta', array( $this,'storeslots_checkout_field_update_order_meta'));
 
-            $this->storeslot_settings = get_option('storeslot_settings', false);
+            $enable_delivery_or_takeaway = !empty($this->storeslot_settings) && isset($this->storeslot_settings['storeslots_enable_delivery_or_takeaway']) ? 'yes' : 'no'; 
 
+            if( 'yes' ==  $enable_delivery_or_takeaway ){
+                add_action('woocommerce_after_order_notes', array($this, 'storeslots_add_custom_field'));
+                add_action('woocommerce_checkout_process', array($this, 'storeslots_checkout_field_process'));
+                add_action('woocommerce_checkout_update_order_meta', array( $this,'storeslots_checkout_field_update_order_meta'));
+            }
+
+            $enable_first_order_discount = !empty($this->storeslot_settings) && isset($this->storeslot_settings['enable_first_order_discount']) ? 'yes' : 'no'; 
+
+            if( 'yes' == $enable_first_order_discount ){
+                add_action('woocommerce_cart_calculate_fees', array( $this,'discount_based_on_customer_first_order'), 10, 1);
+            }
+
+           
         }
 
         public function store_slots_frontend_enqueue ($page) {
@@ -29,6 +40,13 @@ if (!class_exists ('StoreSlotsFrontend')) {
         }
 
         public function storeslots_add_custom_field($checkout){
+
+            $order_type_label  = !empty($this->storeslot_settings) && !empty($this->storeslot_settings['storeslots_order_type_label']) ? $this->storeslot_settings['storeslots_order_type_label'] : 'Order Type';
+
+            $delivery_option_label  = !empty($this->storeslot_settings) && !empty($this->storeslot_settings['storeslots_delivery_option_label']) ? $this->storeslot_settings['storeslots_delivery_option_label'] : 'Delivery';
+
+            $takeaway_option_label = !empty($this->storeslot_settings) && !empty($this->storeslot_settings['storeslots_takeaway_option_label']) ? $this->storeslot_settings['storeslots_takeaway_option_label'] : 'Takeaway';
+
             echo '<div id="storeslots_custom_checkout_field">';
 
             woocommerce_form_field(
@@ -38,13 +56,13 @@ if (!class_exists ('StoreSlotsFrontend')) {
                     'class' => array(
                         'storeslots_ordertype_selection_box'
                     ),
-                    'label' => __('Order Type'),
-                    'placeholder' => __('Order Type'),
+                    'label' => __( $order_type_label),
+                    'placeholder' => __( $order_type_label ),
                     
                     'options' => array(
                          '' => __('Choose Order type'),
-                        'delivery' => __('Delivery'),
-                        'pickup' => __('Pickup')
+                        'delivery' => __($delivery_option_label),
+                        'takeaway' => __( $takeaway_option_label)
                     ),
 
                     'required' => true,
@@ -72,7 +90,7 @@ if (!class_exists ('StoreSlotsFrontend')) {
 
             if( !empty( $storeslots_saturday )){
                 if( !empty( $saturday_open_hour_start ) && !empty(  $saturday_open_hour_end )  ){
-                    $storeslots_saturday_time =  '--> ' . $saturday_open_hour_start . ' - ' . $saturday_open_hour_end;
+                    $storeslots_saturday_time =  ' ⇢ ' . $saturday_open_hour_start . ' - ' . $saturday_open_hour_end;
                 }
                 
                 $store_slot_one = ucfirst( $storeslots_saturday )  . $storeslots_saturday_time;
@@ -86,7 +104,7 @@ if (!class_exists ('StoreSlotsFrontend')) {
 
             if( !empty( $storeslots_sunday )){
                 if( !empty( $sunday_open_hour_start ) && !empty(  $sunday_open_hour_end )  ){
-                    $storeslots_sunday_time =  '--> ' . $sunday_open_hour_start . ' - ' . $sunday_open_hour_end;
+                    $storeslots_sunday_time =  ' ⇢ ' . $sunday_open_hour_start . ' - ' . $sunday_open_hour_end;
                 }
                 $store_slot_two = ucfirst( $storeslots_sunday )  . $storeslots_sunday_time;
 
@@ -99,7 +117,7 @@ if (!class_exists ('StoreSlotsFrontend')) {
 
             if( !empty( $storeslots_monday )){
                 if( !empty( $monday_open_hour_start ) && !empty(  $monday_open_hour_end )  ){
-                    $storeslots_monday_time =  '--> ' . $monday_open_hour_start . ' - ' . $monday_open_hour_end;
+                    $storeslots_monday_time =  ' ⇢ ' . $monday_open_hour_start . ' - ' . $monday_open_hour_end;
                 }
                 $store_slot_three = ucfirst( $storeslots_monday )  . $storeslots_monday_time;
 
@@ -112,7 +130,7 @@ if (!class_exists ('StoreSlotsFrontend')) {
 
             if( !empty( $storeslots_tuesday )){
                 if( !empty( $tuesday_open_hour_start ) && !empty(  $tuesday_open_hour_end )  ){
-                    $storeslots_tuesday_time =  '--> ' . $tuesday_open_hour_start . ' - ' . $tuesday_open_hour_end;
+                    $storeslots_tuesday_time =  ' ⇢ ' . $tuesday_open_hour_start . ' - ' . $tuesday_open_hour_end;
                 }
 
                 $store_slot_four = ucfirst( $storeslots_tuesday )  . $storeslots_tuesday_time;
@@ -125,7 +143,7 @@ if (!class_exists ('StoreSlotsFrontend')) {
 
             if( !empty( $storeslots_wednesday )){
                 if( !empty( $wednesday_open_hour_start ) && !empty(  $wednesday_open_hour_end )  ){
-                    $storeslots_wednesday_time =  '--> ' . $wednesday_open_hour_start . ' - ' . $wednesday_open_hour_end;
+                    $storeslots_wednesday_time =  ' ⇢ ' . $wednesday_open_hour_start . ' - ' . $wednesday_open_hour_end;
                 }
 
                 $store_slot_five = ucfirst( $storeslots_wednesday )  . $storeslots_wednesday_time;
@@ -139,7 +157,7 @@ if (!class_exists ('StoreSlotsFrontend')) {
 
             if( !empty( $storeslots_thursday )){
                 if( !empty( $thursday_open_hour_start ) && !empty(  $thursday_open_hour_end )  ){
-                    $storeslots_thursday_time =  '--> ' . $thursday_open_hour_start . ' - ' . $thursday_open_hour_end;
+                    $storeslots_thursday_time =  ' ⇢ ' . $thursday_open_hour_start . ' - ' . $thursday_open_hour_end;
                 }
                 $store_slot_six = ucfirst( $storeslots_thursday )  . $storeslots_thursday_time;
                 $storeslots_schedules[$store_slot_six] = $store_slot_six;
@@ -151,11 +169,14 @@ if (!class_exists ('StoreSlotsFrontend')) {
 
             if( !empty( $storeslots_friday )){
                 if( !empty( $friday_open_hour_start ) && !empty(  $friday_open_hour_end )  ){
-                    $storeslots_friday_time =  '--> ' . $friday_open_hour_start . ' - ' . $friday_open_hour_end;
+                    $storeslots_friday_time =  ' ⇢ ' . $friday_open_hour_start . ' - ' . $friday_open_hour_end;
                 }
                 $store_slot_seven = ucfirst( $storeslots_friday )  . $storeslots_friday_time; 
                 $storeslots_schedules[ $store_slot_seven] =  $store_slot_seven;
             }
+
+
+            $delivery_date_time_label  = !empty($this->storeslot_settings) && !empty($this->storeslot_settings['storeslots_delivery_date_time_label']) ? $this->storeslot_settings['storeslots_delivery_date_time_label'] : 'Delivery Date & Time';
 
         echo '<div id="storeslots_custom_checkout_schedule">';
             woocommerce_form_field(
@@ -165,8 +186,8 @@ if (!class_exists ('StoreSlotsFrontend')) {
                     'class' => array(
                         'storeslots_order_schedule'
                     ),
-                    'label' => __('Delivery Date & Time'),
-                    'placeholder' => __('Delivery Date & Time'),
+                    'label' => __( $delivery_date_time_label),
+                    'placeholder' => __( $delivery_date_time_label),
                     
                     'options' => $storeslots_schedules,
 
@@ -185,22 +206,58 @@ if (!class_exists ('StoreSlotsFrontend')) {
         }
 
         public function storeslots_checkout_field_update_order_meta( $order_id ){
-            $order_type_val = '';
+           
             if (!empty($_POST['storeslots_ordertype_selection_box'])) {
-                $order_type_val = $_POST['storeslots_ordertype_selection_box'];
-
                 update_post_meta($order_id, 'delivery_type', sanitize_text_field($_POST['storeslots_ordertype_selection_box']));
             }
 
             if (!empty($_POST['storeslots_order_schedule'])) {
 
-                update_post_meta($order_id, $order_type_val .'_date_time', sanitize_text_field($_POST['storeslots_order_schedule']));
+                update_post_meta($order_id, 'delivery_schedule', sanitize_text_field($_POST['storeslots_order_schedule']));
             }
 
 
         }
 
-       
+        public function discount_based_on_customer_first_order( $cart_object ){
+            global $woocommerce;
+
+            if ( is_admin() && ! defined( 'DOING_AJAX' ) )
+                return;  
+        
+            // Getting "completed" customer orders
+            $customer_orders = get_posts( array(
+                'numberposts' => -1,
+                'meta_key'    => '_customer_user',
+                'meta_value'  => get_current_user_id(),
+                'post_type'   => 'shop_order', // WC orders post type
+                'post_status' => 'wc-completed' // Only orders with status "completed"
+            ) );
+        
+            // Orders count
+            $customer_orders_count = count($customer_orders);
+        
+            // The cart total
+            $cart_total = WC()->cart->get_total(); // or WC()->cart->get_total_ex_tax()
+        
+            // First customer order
+            $first_order_discount = !empty($this->storeslot_settings) && !empty($this->storeslot_settings['first_order_discount']) ? $this->storeslot_settings['first_order_discount'] : 40;
+
+            $first_order_discount_label = !empty($this->storeslot_settings) && !empty($this->storeslot_settings['first_order_discount_label']) ? $this->storeslot_settings['first_order_discount_label'] : 'First Order Discount';
+
+            if( empty($customer_orders) || $customer_orders_count == 0 ){
+                $percentage = $first_order_discount / 100;
+                $discount_text = __($first_order_discount_label, 'store-slots');
+                $discount =  - (( $woocommerce->cart->cart_contents_total + $woocommerce->cart->shipping_total ) * $percentage);
+            } 
+            
+        
+            // Apply discount
+            if( ! empty( $discount ) ){
+                // Note: Last argument is related to applying the tax (false by default)
+                $cart_object->add_fee( $discount_text, $discount, false);
+            }
+        }
 
     }
 }

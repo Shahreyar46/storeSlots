@@ -1,5 +1,5 @@
 <?php 
-    
+
     $storeslots_saturday  = !empty($this->storeslot_settings) && !empty($this->storeslot_settings['storeslots_saturday']) ? $this->storeslot_settings['storeslots_saturday'] : ''; 
     $storeslots_sunday  = !empty($this->storeslot_settings) && !empty($this->storeslot_settings['storeslots_sunday']) ? $this->storeslot_settings['storeslots_sunday'] : ''; 
     $storeslots_monday  = !empty($this->storeslot_settings) && !empty($this->storeslot_settings['storeslots_monday']) ? $this->storeslot_settings['storeslots_monday'] : ''; 
@@ -47,6 +47,11 @@
                             <div class="tab_item" data-target="opening_schedules">
                                 <h3> <?php _e('Opening Schedules', 'storeslots'); ?> </h3>
                             </div>
+
+                            <div class="tab_item" data-target="fee_settings">
+                                <h3> <?php _e('Fee Settings', 'storeslots'); ?> </h3>
+                            </div>
+
                         </div>
                     </div>
 
@@ -116,6 +121,36 @@
                                             <input class="storeslots_text_control h50" type="text" name="storeslots_takeaway_option_label" id="storeslots_takeaway_option_label" value="<?php echo !empty($this->storeslot_settings) && !empty($this->storeslot_settings['storeslots_takeaway_option_label']) ? $this->storeslot_settings['storeslots_takeaway_option_label'] : ''; ?>" placeholder="">
                                         </div>
                                         <small class="storeslots-hints">Order type's takeaway delivery option.</small>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="storeslots_form_group">
+                                <div class="label_title">
+                                    <h4><?php _e('Dine-In Option Label', 'store-slots'); ?></h4>
+                                </div>
+
+                                <div class="label_content ">
+                                    <div class="storeslots_list_items">
+                                        <div class="storeslots_item">
+                                            <input class="storeslots_text_control h50" type="text" name="storeslots_dinein_option_label" id="storeslots_dinein_option_label" value="<?php echo !empty($this->storeslot_settings) && !empty($this->storeslot_settings['storeslots_dinein_option_label']) ? $this->storeslot_settings['storeslots_dinein_option_label'] : ''; ?>" placeholder="">
+                                        </div>
+                                        <small class="storeslots-hints">Order type's dine-in delivery option.</small>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="storeslots_form_group">
+                                <div class="label_title">
+                                    <h4><?php _e('Delivery Date & Time  Label', 'store-slots'); ?></h4>
+                                </div>
+
+                                <div class="label_content ">
+                                    <div class="storeslots_list_items">
+                                        <div class="storeslots_item">
+                                            <input class="storeslots_text_control h50" type="text" name="storeslots_delivery_date_time_label" id="storeslots_delivery_date_time_label" value="<?php echo !empty($this->storeslot_settings) && !empty($this->storeslot_settings['storeslots_delivery_date_time_label']) ? $this->storeslot_settings['storeslots_delivery_date_time_label'] : ''; ?>" placeholder="">
+                                        </div>
+                                        <small class="storeslots-hints">Delivery Time  Slot Label.</small>
                                     </div>
                                 </div>
                             </div>
@@ -241,6 +276,112 @@
 
                         </div>
                         <!-- End Delivery Date -->
+
+                        <!-- Start Fee Settings -->
+                        <div data-id="fee_settings" class="storeslots_tab_body">
+                            <div class="tab_body_title">
+                                <h1><?php _e('Custom Fee Settings', 'storeslots'); ?></h1>
+                            </div>
+
+                            <div class="storeslots_form_group">
+                                <div class="label_title">
+                                    <h4><?php _e('Enable First Order Discount?', 'storeslots'); ?></h4>
+                                </div>
+
+                                <div class="label_content ">
+                                    <div class="storeslots_list_items">
+                                        <div class="storeslots_item">
+                                            <label class="toggle_switch">
+                                                <input id="enable_first_order_discount" class="storeslots_default_checked" name="enable_first_order_discount" type="checkbox" value="yes" <?php echo !empty($this->storeslot_settings) && isset($this->storeslot_settings['enable_first_order_discount']) ? 'checked' : ''; ?>>
+                                                <span class="slider round"></span>
+                                            </label>
+                                        </div>
+                                        <small class="storeslots-hints">Enable if you want discount for first order.</small>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="storeslots_form_group">
+                                <div class="label_title">
+                                    <h4><?php _e('First Order Discount Label', 'storefusion'); ?></h4>
+                                </div>
+
+                                <div class="label_content ">
+                                    <div class="storeslots_list_items">
+                                        <div class="storeslots_item">
+                                            <input class="storeslots_text_control h50" type="text" name="first_order_discount_label" id="" value="<?php echo !empty($this->storeslot_settings) && !empty($this->storeslot_settings['first_order_discount_label']) ? $this->storeslot_settings['first_order_discount_label'] : ''; ?>" placeholder="">
+                                        </div>
+                                        <small class="storeslots-hints">Customer first order discount fee label.</small>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="storeslots_form_group">
+                                <div class="label_title">
+                                    <h4><?php _e('First Order Discount', 'storefusion'); ?></h4>
+                                </div>
+
+                                <div class="label_content ">
+                                    <div class="storeslots_list_items">
+                                        <div class="storeslots_item">
+                                            <input class="storeslots_text_control h50" type="number" name="first_order_discount" id="" value="<?php echo !empty($this->storeslot_settings) && !empty($this->storeslot_settings['first_order_discount']) ? $this->storeslot_settings['first_order_discount'] : ''; ?>" placeholder="">
+                                        </div>
+                                        <small class="storeslots-hints">Customer first order discount in percentage.</small>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="storeslots_form_group">
+                                <div class="label_title">
+                                    <h4><?php _e('Enable Dine-In Extra Fee?', 'storeslots'); ?></h4>
+                                </div>
+
+                                <div class="label_content ">
+                                    <div class="storeslots_list_items">
+                                        <div class="storeslots_item">
+                                            <label class="toggle_switch">
+                                                <input id="enable_dinein_extra_fee" class="storeslots_default_checked" name="enable_dinein_extra_fee" type="checkbox" value="yes" <?php echo !empty($this->storeslot_settings) && isset($this->storeslot_settings['enable_dinein_extra_fee']) ? 'checked' : ''; ?>>
+                                                <span class="slider round"></span>
+                                            </label>
+                                        </div>
+                                        <small class="storeslots-hints">Enable if you want extra charge for dine-in type order..</small>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="storeslots_form_group">
+                                <div class="label_title">
+                                    <h4><?php _e('Dine-In Extra Fee Label', 'storefusion'); ?></h4>
+                                </div>
+
+                                <div class="label_content ">
+                                    <div class="storeslots_list_items">
+                                        <div class="storeslots_item">
+                                            <input class="storeslots_text_control h50" type="text" name="dinein_extra_fee_label" id="" value="<?php echo !empty($this->storeslot_settings) && !empty($this->storeslot_settings['dinein_extra_fee_label']) ? $this->storeslot_settings['dinein_extra_fee_label'] : ''; ?>" placeholder="">
+                                        </div>
+                                        <small class="storeslots-hints">Exta charge label for dine-in.</small>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="storeslots_form_group">
+                                <div class="label_title">
+                                    <h4><?php _e('Dine-In Extra Fee Label', 'storefusion'); ?></h4>
+                                </div>
+
+                                <div class="label_content ">
+                                    <div class="storeslots_list_items">
+                                        <div class="storeslots_item">
+                                            <input class="storeslots_text_control h50" type="number" name="dinein_extra_fee" id="" value="<?php echo !empty($this->storeslot_settings) && !empty($this->storeslot_settings['dinein_extra_fee']) ? $this->storeslot_settings['dinein_extra_fee'] : ''; ?>" placeholder="">
+                                        </div>
+                                        <small class="storeslots-hints">Exta charge for dine-in order in percentage.</small>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <!-- End Fee Settings -->
 
 
 
